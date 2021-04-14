@@ -5,26 +5,24 @@ public class Player {
 	     
 	     
 	     private String name;
-	     private int whichPiece;
 	     private int space;
 	     private int credits;
+	     private int minCredits;
+	     private int orderPosition;
 	     private boolean onHoliday;
+	     private boolean custodian;
 	    
-	     
-	     public Player() 
-	     {
-	          name       = new String("UNKNOWN");
-	          space      = 0;
-	          credits     = 1500;
-	        onHoliday   = false;
-	          
-	     }
+	  
 	   public Player(String n)
 	     {
 	          name       = n;
-	          whichPiece = 0;
 	          space      = 0;
+	          credits     = 1500; //JUST CHOSE THIS NUMBER TBC
 	          onHoliday   = false; 
+	          custodian = false;
+	          orderPosition= 0;
+	          minCredits=0;
+	          
 	     }
 	     
 	   
@@ -69,21 +67,9 @@ public class Player {
 	     public void setOnHol(boolean status)
 	     {
 	    	 onHoliday = status;
-	          if(!onHoliday)
-	               timeInJail = 0;
 	     }
 	    
-	     public int getPiece()
-	     {
-	          return whichPiece;
-	     }
-	     
-	     
-	     public void setPiece(int piece)
-	     {
-	          whichPiece = piece;
-	     }
-	     
+	   
 	     
 	     public int getCredit()
 	     {
@@ -95,14 +81,19 @@ public class Player {
 	     {
 	          credits += value;
 	     }
+
+
+
+		@Override
+		public String toString() {
+			return "Player [name=" + name + ", space=" + space + ", credits=" + credits + ", minCredits=" + minCredits
+					+ ", orderPosition=" + orderPosition + ", onHoliday=" + onHoliday + ", custodian=" + custodian
+					+ "]";
+		}
 	     
 	     
 	     
-	     
-	     public String toString()
-	     {
-	          
-	     }
+	    
 	     
 	     
 	     
