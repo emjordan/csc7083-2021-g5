@@ -2,16 +2,22 @@ package artlite;
 
 import java.util.ArrayList;
 
+
 public class Board {
 
 	public static void main(String[] args) {
-		systemBuild();
+		systemsBuild();
+		
 		
 		
 		
 	}
 	
-	public static void systemBuild() {
+	public static void systemsBuild() {
+		
+		int currentSpace=1;
+		
+		//building the orion space craft system
 
 		Element e1 = new Element ("Crew Module", "Environmental Control and Life Support System", "Heat Shield","Parachutes", "Assemble Minor Developments",1);
 		Element e2 = new Element ("Service Module", "Solar Array Wings", "Fairing Panels","Spacecraft adaptor jettison fairings", "Assemble Minor Developments", 2);
@@ -28,7 +34,29 @@ public class Board {
 		
 		Systems orionSpacecraft = new Systems("orionSpacecraft", null, 100,system1);
 		
+		//some tests to see if the set up works
 		System.out.println(orionSpacecraft.toString());
+		orionSpacecraft.setCustodian("Emily");
+		System.out.println(orionSpacecraft.toString());
+		int minordevcost=orionSpacecraft.getMinorDev1Cost();
+		System.out.println(minordevcost);
+		int majordevcost= orionSpacecraft.getMajorDevCost();
+		System.out.println(majordevcost);
+		ArrayList<Element> orionElements= orionSpacecraft.getElements();
+		
+		//trying to access the names of the developments on a certain square
+		//maybe some sort of method with a square number parameter
+		for (int counter = 0; counter < orionElements.size(); counter++) { 		      
+	         Element element= orionElements.get(counter); 
+	         if(currentSpace==element.getSpace()) {
+	        	 String minorDev1name= element.getMinorDev1();
+	        	 String minorDev2name= element.getMinorDev2();
+	        	 String minorDev3name= element.getMinorDev3();
+	        	 String majorDevname= element.getMajorDev();
+	        	 System.out.println(minorDev1name);
+	         }
+		}
+	
 	}
 
 }
