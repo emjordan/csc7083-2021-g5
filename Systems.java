@@ -15,7 +15,7 @@ public class Systems {
 	private int minorDev3Cost;
 	private int majorDevCost;
 	private int rent;
-	
+	private ArrayList<Integer> spaces= new ArrayList<Integer>();
 	private ArrayList <Element> elements = new ArrayList <Element> ();
 	
 	
@@ -23,19 +23,28 @@ public class Systems {
 		//default constructor
 	}
 	
-	public Systems(String systemName, String custodian, int rent,  ArrayList <Element> elements) {
+	public Systems(String systemName, String custodian, int rent,  ArrayList <Element> elements, ArrayList<Integer> spaces) {
 		this.systemName = systemName;
 		this.custodian = custodian;
 		this.minorDev1Cost=1;
 		this.minorDev2Cost=2;
 		this.minorDev3Cost=3;
 		this.majorDevCost=4;
+		this.spaces=spaces;
 		this.rent = rent;
 		this.elements= elements;
 		
 	}
 	
 	
+
+	public ArrayList<Integer> getSpaces() {
+		return spaces;
+	}
+
+	public void setSpaces(ArrayList<Integer> spaces) {
+		this.spaces = spaces;
+	}
 
 	public int getMinorDev1Cost() {
 		return minorDev1Cost;

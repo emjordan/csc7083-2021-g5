@@ -31,8 +31,10 @@ public class Board {
 			
 			System.out.println(system1);
 			
+			ArrayList<Integer> system1spaces= new ArrayList<Integer>();
+			
 		
-		Systems orionSpacecraft = new Systems("orionSpacecraft", null, 100,system1);
+		Systems orionSpacecraft = new Systems("orionSpacecraft", null, 100,system1, system1spaces );
 		
 		//some tests to see if the set up works
 		System.out.println(orionSpacecraft.toString());
@@ -53,7 +55,7 @@ public class Board {
 	        	 String minorDev2name= element.getMinorDev2();
 	        	 String minorDev3name= element.getMinorDev3();
 	        	 String majorDevname= element.getMajorDev();
-	        	 System.out.println(minorDev1name);
+	        	 System.out.println("You have landed on " +minorDev1name);
 	         }
 		}
 	
