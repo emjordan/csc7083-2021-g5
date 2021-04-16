@@ -7,6 +7,7 @@ public class Element {
 	private String minorDev2;
 	private String minorDev3;
 	private String majorDev;
+	private int developmentLevel=0;
 	private int space;
 
 	
@@ -14,7 +15,7 @@ public class Element {
 		//default constructor
 	}
 	
-	public Element(String elementName, String minorDev1, String minorDev2, String minorDev3, String majorDev, int space) {
+	public Element(String elementName, String minorDev1, String minorDev2, String minorDev3, String majorDev, int space, int developmentLevel) {
 		super();
 		this.elementName = elementName;
 		this.minorDev1 = minorDev1;
@@ -22,10 +23,20 @@ public class Element {
 		this.minorDev3 = minorDev3;
 		this.majorDev = majorDev;
 		this.space = space;
+		this.developmentLevel=developmentLevel;
 		
 	}
 
 	
+	
+	public int getDevelopmentLevel() {
+		return developmentLevel;
+	}
+
+	public void setDevelopmentLevel(int developmentLevel) {
+		this.developmentLevel = developmentLevel;
+	}
+
 	/**
 	 * @return the elementName
 	 */
