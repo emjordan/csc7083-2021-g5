@@ -26,14 +26,10 @@ public class Player {
 	 * constructor with parameters
 	 */
 	
-	public Player(String name, int space, int bankBalance) {
+	public Player(String name) {
 		this.name = name; 
-		this.space = space;
-		this.setBankBalance(bankBalance);
-	}
-
-	public Player (String name) {
-		this.name = name;
+		this.space = 1;
+		this.bankBalance = 100;
 	}
 	
 	public String getName() {
@@ -51,6 +47,10 @@ public class Player {
 	public void setSpace(int space) {
 		this.space = space;
 	}
+	
+	public void moveSpace(int numOnDice) {
+		space+=numOnDice;
+	}
 
 	public int getBankBalance() {
 		return bankBalance;
@@ -63,10 +63,18 @@ public class Player {
 
 	@Override
 	public String toString() {
-		return "Player [name=" + name + ", space=" + space + ", bankBalance=" + bankBalance + "]";
+		return name;
 	}
 	
 	
+	
+	public String printAll() {
+		return "Name = " + name + "\nSpace = " + space + "\nBank Balance = " + bankBalance + "\n";
+	}
+	
+	public String playerList() {
+		return "Player [name=" + name + "]";
+	}
 	
 	
 	
