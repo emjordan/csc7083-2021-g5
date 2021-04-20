@@ -223,6 +223,22 @@ public class PlayGame {
 					custodian = myElement.getCustodian();
 				}
 			}
+			return custodian;	
+		}
+		
+		
+		//NW modified EJ method to use the player's position to perform the check.
+		public static String NcheckCurrentElementCustodian(Player p) {
+
+			Element myElement = null;
+			String custodian = null;
+
+			for (int counter = 0; counter < boardGameElements.size(); counter++) {
+				myElement = boardGameElements.get(counter);
+				if (p.getSpace() == myElement.getSpace()) {
+					custodian = myElement.getCustodian();
+				}
+			}
 			return custodian;
 		}
 
@@ -321,6 +337,23 @@ public class PlayGame {
 			}
 			System.out.println("You have planted a flag on " + elementName);
 		}
+		
+		//NW modified EJ method to use the player's position to perform the check.
+		public static void NplantFlag(Player p) {
+			
+			Element myElement = null;
+			String elementName = null;
+			
+			for (int counter = 0; counter < boardGameElements.size(); counter++) {
+				myElement = boardGameElements.get(counter);
+				if (p.getSpace() == myElement.getSpace()) {
+					myElement.setFlagPlanted(true);
+					elementName = myElement.getElementName();
+				}
+			}
+			System.out.println("You have planted a flag on " + elementName);
+		}
+		
 
 		// EJ Work- method to check what development level a player is at in the game
 		// when they are on a square
@@ -476,8 +509,6 @@ public class PlayGame {
 		Dice roll = new Dice();
 		int rollOutcome = roll.rollDice();
 		
-		Element myElement;
-		
 		Player activePlayer = players.get(counter);
 		System.out.println(activePlayer + " you rolled " + rollOutcome);
 
@@ -508,11 +539,36 @@ public class PlayGame {
 			activePlayer.moveSpace(rollOutcome);
 			//System.out.println(activePlayer + " has landed on : " + squares.get(move).getElementName()); // arrayList to get element name		
 			System.out.println(activePlayer + " has landed on : "+playerSpaceOnBoard(activePlayer)); 
-		
-		
+			
 		}
 	}
 	
+	public static void takeTurn(int counter, Scanner input) {
+		
+		Player activePlayer = players.get(counter);
+		//System.out.println(activePlayer + " you are here : "+playerSpaceOnBoard(activePlayer));  unnecessary message.
+		/**
+		 * is square available?
+		 * 	if yes - plant flag?
+		 * 	else - is rent due?
+		 * 
+		 * is square able to be developed?
+		 * 	if yes - undertake development 
+		 * 		let player know how many devs are complete etc.
+		 * 	if no - move on
+		 */
+		if(NcheckCurrentElementCustodian(activePlayer)==null) {
+			System.out.println("Do you want to claim this square (answer 'y' or 'n'):  "); //needs a try catch for errors on input - will come back to that.
+			String user = input.nextLine();
+			if(user.equalsIgnoreCase("y")) {
+				NplantFlag(activePlayer);
+			} else {
+				//rent
+			}
+			
+		}
+		
+	}
 	
 
 	public static void main(String[] args) {
@@ -540,6 +596,7 @@ public class PlayGame {
 			switch (choice) {
 			case 1:
 				move(counter);
+				takeTurn(counter, input);
 				break;
 			case 2:
 				checkInventory(0);
