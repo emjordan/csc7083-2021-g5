@@ -333,6 +333,8 @@ public class PlayGame {
 				if (currentSpace == myElement.getSpace()) {
 					myElement.setFlagPlanted(true);
 					myElement.getElementName();
+					//JM added for inventory
+					myElement.setFlagOwner(p.getName());
 				}
 			}
 			System.out.println("You have planted a flag on " + elementName);
@@ -478,19 +480,39 @@ public class PlayGame {
 			return devCostChargeable;
 		}
 
-	public static void checkInventory(int p) {
+		public static void checkInventory(int x){
+		//Player playerStock = players.get(p);
+		Player p = players.get(x);	
+		Element e = null;
+		String stock = "";
+		for (int i = 0; i < boardGameElements.size(); i++) {
+			e = boardGameElements.get(i);
+			if (e.getFlagOwner() == p.getName()) {
+				stock = e.getElementName();	
+			}
+		}
+		int credits = p.getNASAcredits();
+		String name = p.getName();
+		//String name = playerStock.getName();
+		//int credits = playerStock.getNASAcredits();
+
+		System.out.println(
+				"Player: " + name + " your have: " + credits + " NASA credits and hold the following developments:" + stock);
+		
+	}
+//	public static void checkInventory(int p) {
 		// might need to assign
-		Player playerStock = players.get(p);
+	//	Player playerStock = players.get(p);
 		// Systems sysdev = new Systems(); ------- need to work out how to tie into
 		// System
 		// sysdev.setCustodian(playerStock.getName());
 		// String dev = sysdev.getCustodian();
-		String name = playerStock.getName();
-		int credits = playerStock.getNASAcredits();
+	//	String name = playerStock.getName();
+	//	int credits = playerStock.getNASAcredits();
 
-		System.out.println(
+	//	System.out.println(
 				"Player: " + name + " your have: " + credits + " NASA credits and hold the following developments:");
-	}
+//	}
 	
 	public static String playerSpaceOnBoard(Player p) {
 		Element myElement;
