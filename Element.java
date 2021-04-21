@@ -1,8 +1,10 @@
-package Artemis;
+package qub.ac.uk.artemisg5;
 
-//changes made to the system element set up were made to allow easier access to getting and setting attributes/ checking if flag planted etc. 
-//System has been allocated as a string rather than the more complicated set up that I created last week which worked but would have been a lot more complicated to apply 
-// Also I have included getters and setters for everything but can't remember if that is good practice.. this wouldn't be needed for things that are constant like development costs
+
+/**
+ * @author  Emily Jordan
+ *
+ */
 public class Element {
 
 	//an element refers to the square on the board game. The board game has 4 systems. 2 systems have 3 elements(or squares) and 2 systems have 2 elements( or squares) 
@@ -24,8 +26,9 @@ public class Element {
 	private int space;
 	private boolean flagPlanted;
 	private String custodian;
+	private String flagOwner;
 
-	
+
 	public Element() {
 		//default constructor
 	}
@@ -47,6 +50,7 @@ public class Element {
 		this.setMajorDevCost(40);
 		this.setRent(10);
 		this.setFlagPlanted(false);
+		this.setFlagOwner(null);
 		this.setCustodian(null);
 	}
 	
@@ -56,7 +60,15 @@ public class Element {
 		this.elementName = elementName;
 		this.space = space;
 	}
+	
+	public String getFlagOwner() {
+		return flagOwner;
+	}
 
+	public void setFlagOwner(String flagOwner) {
+		this.flagOwner = flagOwner;
+	}
+	
 	/**
 	 * @return the elementName
 	 */
@@ -234,6 +246,8 @@ public class Element {
 
 	/**
 	 * @param space the space to set
+	 * @return 
+	 * @return 
 	 */
 	public void setSpace(int space) {
 		this.space = space;
@@ -275,8 +289,5 @@ public class Element {
 				+ ", custodian=" + custodian + "]";
 	}
 
-	
-
-	
 
 }
