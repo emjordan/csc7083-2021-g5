@@ -500,19 +500,7 @@ public class PlayGame {
 				"Player: " + name + " your have: " + credits + " NASA credits and hold the following developments:" + stock);
 		
 	}
-//	public static void checkInventory(int p) {
-		// might need to assign
-	//	Player playerStock = players.get(p);
-		// Systems sysdev = new Systems(); ------- need to work out how to tie into
-		// System
-		// sysdev.setCustodian(playerStock.getName());
-		// String dev = sysdev.getCustodian();
-	//	String name = playerStock.getName();
-	//	int credits = playerStock.getNASAcredits();
 
-	//	System.out.println(
-				"Player: " + name + " your have: " + credits + " NASA credits and hold the following developments:");
-//	}
 	
 	public static String playerSpaceOnBoard(Player p) {
 		Element myElement;
@@ -579,16 +567,39 @@ public class PlayGame {
 		 * 		let player know how many devs are complete etc.
 		 * 	if no - move on
 		 */
-		if(NcheckCurrentElementCustodian(activePlayer)==null) {
+		 
+		 		int s = activePlayer.getSpace();
+
+	
+		
+		if ((NcheckCurrentElementCustodian(activePlayer)==null) && (s!=7)){  //jm - added to account for holiday square
+
 			System.out.println("Do you want to claim this square (answer 'y' or 'n'):  "); //needs a try catch for errors on input - will come back to that.
+		
 			String user = input.nextLine();
 			if(user.equalsIgnoreCase("y")) {
 				NplantFlag(activePlayer);
+			
 			} else {
 				//rent
 			}
 			
+		
+		} else {
+			System.out.println("Sit back and relax you are on a holiday.");
 		}
+	
+		 
+	//	if(NcheckCurrentElementCustodian(activePlayer)==null) {
+		//	System.out.println("Do you want to claim this square (answer 'y' or 'n'):  "); //needs a try catch for errors on input - will come back to that.
+		//	String user = input.nextLine();
+		//	if(user.equalsIgnoreCase("y")) {
+		//		NplantFlag(activePlayer);
+			//} else {
+				//rent
+		//	}
+			
+	//	}
 		
 	}
 	
